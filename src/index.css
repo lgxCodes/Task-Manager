@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1a1a2e;
+  --color-surface: #16213e;
+  --color-card: #1e2d4a;
+  --color-column-bg: rgba(255, 255, 255, 0.04);
+  --color-column-hover: rgba(255, 255, 255, 0.08);
+  --color-text-primary: rgba(255, 255, 255, 0.87);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-accent: #646cff;
+  --color-accent-hover: #535bf2;
+  --color-danger: #e74c3c;
+  --color-danger-hover: #c0392b;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-todo: #e74c3c;
+  --color-in-progress: #f39c12;
+  --color-done: #2ecc71;
+}
+
+:root.light {
+  --color-bg: #c8d3e0;
+  --color-surface: #e8eef6;
+  --color-card: #dce4ef;
+  --color-column-bg: rgba(30, 60, 110, 0.08);
+  --color-column-hover: rgba(30, 60, 110, 0.15);
+  --color-text-primary: #0f1b2d;
+  --color-text-muted: #3b4f6b;
+  --color-accent: #3d5afe;
+  --color-accent-hover: #2a46d9;
+  --color-border: rgba(30, 60, 110, 0.2);
+}
+
+body {
+  @apply m-0 min-h-screen bg-bg text-text-primary;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  @apply min-h-screen flex flex-col;
+}
+
+@keyframes toast-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes card-enter {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
