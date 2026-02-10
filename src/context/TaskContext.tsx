@@ -9,6 +9,7 @@ const initialState: TaskState = {
   error: null,
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function taskReducer(state: TaskState, action: TaskAction): TaskState {
   switch (action.type) {
     case 'FETCH_START':

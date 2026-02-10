@@ -51,9 +51,20 @@ export function BoardPage() {
 
   const openCreateModal = useCallback(() => setShowCreateModal(true), []);
 
-  useEffect(() => {
+  const handleSearchChange = useCallback((q: string) => {
+    setSearchQuery(q);
     setSelectedIds(new Set());
-  }, [deferredQuery, selectedPriorities, sortOrder]);
+  }, []);
+
+  const handlePrioritiesChange = useCallback((p: Priority[]) => {
+    setSelectedPriorities(p);
+    setSelectedIds(new Set());
+  }, []);
+
+  const handleSortOrderChange = useCallback((s: SortOrder | null) => {
+    setSortOrder(s);
+    setSelectedIds(new Set());
+  }, []);
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -205,11 +216,11 @@ export function BoardPage() {
       />
       <SearchFilterBar
         searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        onSearchChange={handleSearchChange}
         selectedPriorities={selectedPriorities}
-        onPrioritiesChange={setSelectedPriorities}
+        onPrioritiesChange={handlePrioritiesChange}
         sortOrder={sortOrder}
-        onSortOrderChange={setSortOrder}
+        onSortOrderChange={handleSortOrderChange}
         selectionMode={selectionMode}
         onSelectionModeToggle={toggleSelectionMode}
         selectedCount={selectedIds.size}

@@ -23,7 +23,7 @@ const variantClasses = {
 export function Toast({ toast, onDismiss }: ToastProps) {
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const remainingRef = useRef(toast.action ? 5000 : 3000);
-  const startRef = useRef(Date.now());
+  const startRef = useRef(0);
 
   const startTimer = useCallback(() => {
     startRef.current = Date.now();
