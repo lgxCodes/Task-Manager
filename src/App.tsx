@@ -8,7 +8,7 @@ import { TaskDetailPage } from './pages/TaskDetailPage/TaskDetailPage.tsx';
 function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
+      <BrowserRouter basename="/Task-Manager">
         <TaskProvider>
           <ToastProvider>
             <Routes>
