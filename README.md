@@ -1,6 +1,6 @@
 # Task Manager
 
-A Kanban-style task management app built with React, TypeScript, and Tailwind CSS.
+A Kanban-style task management app built with React, React Router, TypeScript, and Tailwind CSS.
 
 Live: https://lgxcodes.github.io/Task-Manager
 
