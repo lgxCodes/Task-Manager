@@ -186,7 +186,7 @@ export function SearchFilterBar({
           Select{selectionMode && ` (${selectedCount})`}
         </button>
         {selectionMode && isSelectOpen && (
-          <div className="absolute right-0 top-full mt-1 bg-surface border border-border rounded-lg shadow-lg z-10 min-w-48 py-1">
+          <div className="absolute left-0 sm:left-auto sm:right-0 top-full mt-1 bg-surface border border-border rounded-lg shadow-lg z-10 min-w-48 py-1">
             <div className="px-3 py-1.5 text-xs font-semibold text-text-muted uppercase tracking-wide">
               {selectedCount} of {totalCount} selected
             </div>
