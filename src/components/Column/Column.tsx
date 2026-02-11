@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, memo } from 'react';
 import type { Task, Status } from '../../types/index.ts';
 import { STATUS_LABELS } from '../../types/index.ts';
 import { TaskCard } from '../TaskCard/TaskCard.tsx';
@@ -13,7 +13,7 @@ type ColumnProps = {
   onToggleSelect?: (taskId: string) => void;
 };
 
-export function Column({
+export const Column = memo(function Column({
   status,
   tasks,
   onDropTask,
@@ -67,7 +67,7 @@ export function Column({
 
   return (
     <div
-      className={`bg-column-bg rounded-xl p-4 min-h-50 flex flex-col transition-all duration-200 overflow-hidden min-w-0 ${isDragOver && !selectionMode ? 'bg-column-hover outline-2 outline-dashed outline-accent -outline-offset-2 scale-[1.01]' : ''}`}
+      className={`bg-column-bg rounded-xl p-4 min-h-50 flex flex-col transition-[background-color,transform,outline] duration-200 overflow-hidden min-w-0 ${isDragOver && !selectionMode ? 'bg-column-hover outline-2 outline-dashed outline-accent -outline-offset-2 scale-[1.01]' : ''}`}
       {...dragHandlers}
     >
       <div className="flex items-center justify-between mb-4 px-1 gap-2">
@@ -96,4 +96,17 @@ export function Column({
       </div>
     </div>
   );
-}
+}, (prev, next) => {
+  if (prev.status !== next.status) return false;
+  if (prev.tasks !== next.tasks) return false;
+  if (prev.onDropTask !== next.onDropTask) return false;
+  if (prev.selectionMode !== next.selectionMode) return false;
+  if (prev.onToggleSelect !== next.onToggleSelect) return false;
+  if (prev.selectedIds === next.selectedIds) return true;
+  for (const task of prev.tasks) {
+    if ((prev.selectedIds?.has(task.id) ?? false) !== (next.selectedIds?.has(task.id) ?? false)) {
+      return false;
+    }
+  }
+  return true;
+});

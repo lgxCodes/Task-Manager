@@ -48,14 +48,14 @@ export const TaskCard = memo(function TaskCard({
       }}
     >
       <div
-        className={`bg-card rounded-lg p-4 border-l-4 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg overflow-hidden animate-[card-enter_200ms_ease-out] ${borderColors[task.status]} ${overdueClass} ${selectedClass} ${selectionMode ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`}
+        className={`bg-card rounded-lg p-4 border-l-4 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-lg overflow-hidden animate-[card-enter_200ms_ease-out] ${borderColors[task.status]} ${overdueClass} ${selectedClass} ${selectionMode ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`}
       >
         {selectionMode && (
           <input
             type="checkbox"
             checked={isSelected}
-            readOnly
-            className="accent-accent float-right mt-0.5 ml-2 w-4 h-4 cursor-pointer"
+            onChange={() => {}}
+            className="accent-accent float-right mt-0.5 ml-2 w-4 h-4 pointer-events-none"
             tabIndex={-1}
           />
         )}
